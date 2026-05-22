@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lego-black: #0a0a0f;
+  --color-lego-dark: #0d0d14;
+  --color-lego-card: #12121c;
+  --color-lego-surface: #1a1a28;
+  --color-lego-border: #2a2a3a;
+  --color-neon-teal: #00e5cc;
+  --color-neon-teal-dim: #00b3a0;
+  --color-neon-teal-glow: rgba(0, 229, 204, 0.3);
+  --color-neon-teal-subtle: rgba(0, 229, 204, 0.08);
+  --color-neon-teal-hover: rgba(0, 229, 204, 0.15);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #8888a0;
+  --color-text-muted: #555570;
+
+  --font-family-display: 'Outfit', 'Inter', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-slide-up: slide-up 0.4s ease-out forwards;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 229, 204, 0.2), 0 0 10px rgba(0, 229, 204, 0.1); }
+  50% { box-shadow: 0 0 10px rgba(0, 229, 204, 0.4), 0 0 20px rgba(0, 229, 204, 0.2); }
+}
+
+@keyframes grid-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
+}
+
+/* Base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0f;
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a3a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00e5cc;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 229, 204, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 204, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-scroll 20s linear infinite;
+}
+
+/* Neon glow effects */
+.neon-border {
+  border: 1px solid rgba(0, 229, 204, 0.3);
+  transition: all 0.3s ease;
+}
+
+.neon-border:hover {
+  border-color: rgba(0, 229, 204, 0.7);
+  box-shadow: 0 0 15px rgba(0, 229, 204, 0.15), 0 0 30px rgba(0, 229, 204, 0.05), inset 0 0 15px rgba(0, 229, 204, 0.05);
+}
+
+.neon-glow-strong {
+  box-shadow: 0 0 15px rgba(0, 229, 204, 0.3), 0 0 30px rgba(0, 229, 204, 0.15), 0 0 45px rgba(0, 229, 204, 0.05);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 10px rgba(0, 229, 204, 0.5), 0 0 20px rgba(0, 229, 204, 0.3);
+}
+
+/* Card dimming for group hover */
+.card-container:hover .game-card:not(:hover) {
+  opacity: 0.5;
+  filter: brightness(0.6);
+}
+
+.card-container .game-card {
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
